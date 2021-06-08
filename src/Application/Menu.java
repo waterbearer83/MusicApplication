@@ -16,6 +16,9 @@ public class Menu {
 			"Add New Artist",
 			"Add New Album",
 			"Add New Track",
+			"Update Artist",
+			"Update Album",
+			"Update Track",
 			"Delete Artists",
 			"Delete Albums",
 			"Delete Tracks"
