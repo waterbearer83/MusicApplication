@@ -3,6 +3,7 @@ package Entity;
 public class Albums {
 	private int album_id;
 	private String album;
+	private List<Tracks> tracks;
 	
 	public Albums(int album_id, String album) {
 		this.setAlbum_id(album_id);
@@ -25,4 +26,11 @@ public class Albums {
 		this.album = album;
 	}
 
+	public List<Tracks> getTracks() {
+		return tracks;
+	}
+
+	public void setTracks(List<Tracks> tracks) {
+		this.tracks = tracks;
+	}
 }
