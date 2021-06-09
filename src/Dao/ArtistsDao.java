@@ -7,7 +7,7 @@ public class ArtistsDao {
 	private Connection connection;
 	
 	public ArtistsDao() {
-		connection = DBConnection.getConnection();
+		connection = DBConnection.getInstance().getConnection();
 	
 	}
 }

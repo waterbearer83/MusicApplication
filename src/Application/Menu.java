@@ -47,7 +47,7 @@ public class Menu {
 //					updateTrack();
 			}else if (selection.equals("8")) {
 //					deleteTrack();
-			}
+			} else selection = "-1";
 			}catch (SQLException e) {
 				e.printStackTrace();
 				end();
@@ -69,7 +69,7 @@ public class Menu {
 	
 	private void displayAllTracks() throws SQLException {
 		List<Tracks> myTracks = tracksDao.getAllTracks();
-		System.out.println("All Tracks:\n");
+		System.out.println("All Tracks:\n-------------------------");
 		for (Tracks t:myTracks) {
 			System.out.println(t.getTrack_id() + " " + t.getTrack());
 		}
