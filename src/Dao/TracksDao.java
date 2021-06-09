@@ -21,7 +21,7 @@ public class TracksDao {
 		List<Tracks> out = new ArrayList<>();
 		ResultSet rs = connection.prepareStatement(ALL_TRACKS_QUERY).executeQuery();
 		while (rs.next()) {
-			out.add(new Tracks(rs.getInt("id"), rs.getString("track")));
+			out.add(new Tracks(rs.getInt("track_id"), rs.getString("track")));
 		}
 		return out;
 	}
