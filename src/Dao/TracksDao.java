@@ -13,7 +13,7 @@ public class TracksDao {
 	private Connection connection;
 	private final String ALL_TRACKS_QUERY = "select * from tracks";
 	
-	public TracksDao() {
+	public  TracksDao() {
 		connection = DBConnection.getInstance().getConnection();
 	}
 	
