@@ -1,28 +1,28 @@
 package Application;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import Dao.TracksDao;
+import Entity.Tracks;
+
 public class Menu {
 
-
-	///Maybe we can grow this to be more dynamic....
 	private Scanner scanner = new Scanner(System.in);
 	private List<String> options = Arrays.asList(
-			"Display Artists", 
-			"Display Albums",
-			"Display Tracks",
+			"Display all Tracks",
+			"Display Tracks by Artist",
+			"Display Tracks by Album",
 			"Add New Artist",
 			"Add New Album",
 			"Add New Track",
-			"Update Artist",
-			"Update Album",
 			"Update Track",
-			"Delete Artists",
-			"Delete Albums",
-			"Delete Tracks"
+			"Delete Track"
 			);
+	private	TracksDao tracksDao = new TracksDao();	
+	
 	
 	public void start() {
 		String selection = "";
@@ -30,33 +30,34 @@ public class Menu {
 		do {
 			printMenu();
 			selection = scanner.nextLine();
-			
+		try {		
 			if (selection.equals("1")) {
-//					displayArtists();
+					displayAllTracks();
 			} else if (selection.equals("2")) {
-//					displayAlbums();
+//					displayByAlbum();
 			} else if (selection.equals("3")) {
-//					displayTracks();	
+//					displayByArtist();	
 			} else if (selection.equals("4")) {
-//					addArtists();
+//					addArtist();
 			} else if (selection.equals("5")) {
-//					addAlbums();
+//					addAlbum();
 			} else if (selection.equals("6")) {
-//					addTracks();
+//					addTrack();
 			} else if (selection.equals("7")) {
-//					deleteArtists();
-			} else if (selection.equals("8")) {
-//					deleteAlbums();
-			} else if (selection.equals("9")) {
-//					deleteTracks();
+//					updateTrack();
+			}else if (selection.equals("8")) {
+//					deleteTrack();
 			}
-//			
-// Will want to add a CATCH at the end for a SQL Exeception.
-				
+			}catch (SQLException e) {
+				e.printStackTrace();
+				end();
+			}
 			System.out.println("Please press enter to continue...");
 			scanner.nextLine();
 		} while (!selection.equals("-1"));
+		end();
 	}
+		
 	
 	private void printMenu() {
 		System.out.println("Select an Option:\n-----------------------------");
@@ -64,6 +65,20 @@ public class Menu {
 			System.out.println(i + 1 + ") " + options.get(i));
 		}
 	
+	}
+	
+	private void displayAllTracks() throws SQLException {
+		List<Tracks> myTracks = tracksDao.getAllTracks();
+		System.out.println("All Tracks:\n");
+		for (Tracks t:myTracks) {
+			System.out.println(t.getTrack_id() + " " + t.getTrack());
+		}
+	}
+	
+	public void end() {
+		System.out.println("Bye!");
+		scanner.close();
+		tracksDao.close();	
 	}
 	
 }

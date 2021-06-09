@@ -1,5 +1,7 @@
 package Entity;
 
+import java.util.List;
+
 public class Albums {
 	private int album_id;
 	private String album;
